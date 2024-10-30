@@ -33,7 +33,7 @@ The Gym Booking System provides a platform for employees to reserve gym slots in
 
 Below is the system architecture of the application:
 
-![System Architecture](link-to-system-architecture-image)
+![System Architecture](screenshots/system.png)
 
 The system follows a **client-server** model:
 1. **Back-end**: Built using Node.js and Express for API handling and data management.
@@ -50,7 +50,7 @@ The database includes the following tables:
 
 Here is a visual representation of the Entity-Relationship Diagram (ERD):
 
-![ERD](link-to-ERD-image)
+![ERD](screenshots/erd.png)
 
 ## Technology Stack
 
