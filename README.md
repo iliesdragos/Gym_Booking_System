@@ -17,7 +17,7 @@ The Gym Booking System provides a platform for employees to reserve gym slots in
 ## Features
 
 - **User Registration and Login**: Employees register using their corporate email, ensuring secure access.
-  ![Login and Registration Page](link-to-login-registration-image)
+  ![Login and Registration Page](screenshots/index.png)
 
 - **Real-time Booking System**: View available fitness locations, select a slot, and book a gym session.
   ![Booking Interface](link-to-booking-interface-image)
