@@ -20,10 +20,11 @@ The Gym Booking System provides a platform for employees to reserve gym slots in
   ![Login and Registration Page](screenshots/index.png)
 
 - **Real-time Booking System**: View available fitness locations, select a slot, and book a gym session.
-  ![Booking Interface](link-to-booking-interface-image)
+  ![Booking Interface](screenshots/gyms.png)
+  ![Booking Interface](screenshots/timeslots.png)
 
 - **Admin Dashboard**: Manage gym details, users, and booking schedules with ease.
-  ![Admin Dashboard](link-to-admin-dashboard-image)
+  ![Admin Dashboard](screenshots/admin.png)
 
 - **Password Recovery via SendGrid**: Allows users to reset their password through an email link for added security.
 - **Data Security**: Encrypted passwords and secure data handling.
