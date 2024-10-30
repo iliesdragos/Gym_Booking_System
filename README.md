@@ -93,3 +93,16 @@ Here is a visual representation of the Entity-Relationship Diagram (ERD):
      cd front-end
      npm start
      ```
+
+## Usage
+
+- **Registration and Login**: Users can sign up using their company email.
+- **Booking a Slot**: Select a gym and time slot. The system verifies capacity before confirming the booking.
+- **Admin Features**: Accessible to administrators for managing gyms, users, and bookings.
+
+## Future Improvements
+
+- **Automated Email Reminders**: Implement automated email reminders for upcoming bookings using SendGrid.
+- **Advanced Reporting for HR and Management**: Generate detailed reports on gym usage trends.
+- **Machine Learning**: Implement recommendations for users based on usage patterns and preferences.
+
