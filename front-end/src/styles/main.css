@@ -1,0 +1,552 @@
+/* Layout pentru HomePage.js */
+/* Stiluri pentru secțiunea principală */
+.home-content {
+  background: rgba(0, 0, 0, 0.5); /* Fundal semi-transparent pentru contrast */
+  color: #ffffff; /* Culoare albă pentru text */
+  padding: 50px; /* Spațiere interioară pentru conținut */
+  border-radius: 10px; /* Colțuri rotunjite */
+}
+
+.home-title {
+  font-size: 2.5rem; /* Mărimea fontului pentru titlu */
+  font-weight: bold; /* Îngroșarea fontului pentru titlu */
+  margin-bottom: 20px; /* Spațiere inferioară pentru separare */
+}
+
+.home-text {
+  font-size: 1.2rem; /* Mărimea fontului pentru text */
+  margin-bottom: 30px; /* Spațiere inferioară pentru separare */
+  color: #ffffff; /* Culoare albă pentru text */
+}
+
+.home-buttons .btn-primary {
+  margin-right: 10px; /* Spațiere între butoane */
+}
+
+.home-buttons .btn-outline-light {
+  border-color: #fff; /* Culoare albă pentru bordura butonului */
+}
+
+/* Animații pentru butoane */
+.home-buttons .btn:hover {
+  transform: scale(1.05); /* Mărirea ușoară a butonului la hover */
+  transition: transform 0.2s; /* Tranziție lină pentru efectul de hover */
+}
+
+/* Media queries pentru adaptabilitate */
+@media (max-width: 768px) {
+  .home-background {
+    height: auto;
+    padding: 100px 0; /* Spațiere suplimentară pe dispozitive mici */
+  }
+
+  .home-content {
+    padding: 20px; /* Spațiere redusă pe dispozitive mici */
+  }
+
+  .home-title {
+    font-size: 2rem; /* Diminuarea mărimii fontului pe dispozitive mici */
+  }
+}
+
+/* Stiluri pentru secțiunea "Cine Suntem" */
+.who-we-are-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background-color: #fff; /* Fundal alb */
+  color: #333; /* Culoare text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-container {
+  text-align: justify; /* Aliniere justificată pentru text */
+  padding-right: 15px; /* Spațiere pe dreapta */
+}
+
+.image-container {
+  padding-left: 20px; /* Spațiere pe stânga */
+}
+
+.who-we-are-image {
+  height: auto; /* Înălțime automată pentru imagine */
+  width: 100%; /* Lățime 100% pentru imagine */
+  border-radius: 10px; /* Colțuri rotunjite pentru imagine */
+}
+
+@media (max-width: 768px) {
+  .text-container,
+  .image-container {
+    padding: 0; /* Eliminarea spațierii pe dispozitive mici */
+  }
+}
+
+/* Stiluri pentru secțiunea "Întâlnește-ne antrenorii" */
+.meet-our-trainers-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background-color: #fff; /* Fundal alb */
+}
+
+.trainer-profile {
+  margin-bottom: 30px; /* Spațiere inferioară pentru profil */
+}
+
+.trainer-card {
+  text-align: center; /* Aliniere centrală pentru card */
+  margin: 10px; /* Spațiere exterioară */
+  padding: 20px; /* Spațiere interioară */
+  border-radius: 20px; /* Colțuri rotunjite pentru card */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Umbra pentru card */
+  transition: box-shadow 0.3s ease-in-out; /* Tranziție pentru umbră */
+}
+
+.trainer-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Umbra mai pronunțată la hover */
+}
+
+.trainer-image {
+  max-width: 100%; /* Lățime maximă 100% pentru imagine */
+  height: auto; /* Înălțime automată pentru imagine */
+  border-radius: 50%; /* Colțuri rotunjite pentru imagine */
+  margin-bottom: 15px; /* Spațiere inferioară pentru imagine */
+}
+
+.trainer-card h3 {
+  font-size: 1.5rem; /* Mărimea fontului pentru titlu */
+  margin-bottom: 5px; /* Spațiere inferioară pentru titlu */
+}
+
+.trainer-card p {
+  font-size: 1rem; /* Mărimea fontului pentru text */
+  color: #666; /* Culoare gri pentru text */
+}
+
+@media (max-width: 768px) {
+  .trainer-card {
+    padding: 10px; /* Spațiere redusă pe dispozitive mici */
+  }
+
+  .trainer-card h3 {
+    font-size: 1.2rem; /* Diminuarea mărimii fontului pe dispozitive mici */
+  }
+
+  .trainer-card p {
+    font-size: 0.9rem; /* Diminuarea mărimii fontului pe dispozitive mici */
+  }
+}
+
+/* Stiluri pentru secțiunea FAQ */
+.faq-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background: white; /* Fundal alb */
+}
+
+.faq-section h2 {
+  text-align: center; /* Aliniere centrală pentru titlu */
+  margin-bottom: 20px; /* Spațiere inferioară pentru titlu */
+  font-size: 2rem; /* Mărimea fontului pentru titlu */
+}
+
+.accordion-item {
+  border: none; /* Eliminarea bordurii implicite */
+  background-color: transparent; /* Fundal transparent */
+  margin-bottom: 1rem; /* Spațiere inferioară pentru item */
+}
+
+.accordion-button {
+  position: relative; /* Poziționare relativă pentru pseudo-elemente */
+  background-color: #eee; /* Culoare de fundal pentru buton */
+  color: #333; /* Culoare text pentru buton */
+}
+
+.accordion-button:not(.collapsed) {
+  color: #fff; /* Culoare text când este deschis */
+  background-color: #000; /* Culoare de fundal când este deschis */
+}
+
+.accordion-button:not(.collapsed)::after {
+  transform: translateY(-50%) rotate(180deg); /* Rotirea săgeții când este deschis */
+}
+
+.accordion-body {
+  background-color: #f8f9fa; /* Culoare de fundal pentru corpul accordionului */
+}
+
+/* Eliminarea conturului albastru la focus */
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+/* Stiluri pentru secțiunea Testimoniale */
+.testimonials-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background-color: #f8f9fa; /* Fundal gri deschis */
+}
+
+.testimonials-section h2 {
+  margin-bottom: 30px; /* Spațiere inferioară pentru titlu */
+}
+
+.testimonial-card {
+  background: #fff; /* Fundal alb pentru card */
+  padding: 20px; /* Spațiere interioară pentru card */
+  border-radius: 10px; /* Colțuri rotunjite pentru card */
+  text-align: center; /* Aliniere centrală pentru text */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbra pentru card */
+}
+
+.stars {
+  color: #ffd700; /* Culoare aurie pentru stele */
+}
+
+.testimonial-text {
+  font-style: italic; /* Stil italic pentru text */
+}
+
+.testimonial-author {
+  font-weight: bold; /* Text îngroșat pentru autor */
+  margin-top: 15px; /* Spațiere superioară pentru autor */
+}
+
+/* Stiluri pentru secțiunea Galerie */
+.gallery-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background-color: #f8f9fa; /* Fundal gri deschis */
+}
+
+.gallery-section h2 {
+  margin-bottom: 30px; /* Spațiere inferioară pentru titlu */
+  font-weight: bold; /* Text îngroșat pentru titlu */
+}
+
+.carousel-item img {
+  height: 500px; /* Înălțime fixă pentru imagini */
+  width: 100%; /* Lățime 100% pentru imagini */
+  object-fit: contain; /* Potrivirea imaginii în container */
+  object-position: center; /* Poziționarea imaginii în centru */
+}
+
+/* Stiluri pentru secțiunea de contact */
+.contact-section {
+  padding: 50px 0; /* Spațiere interioară pentru secțiune */
+  background-color: lightgrey; /* Fundal gri deschis */
+}
+
+.contact-section h2 {
+  margin-bottom: 20px; /* Spațiere inferioară pentru titlu */
+  font-weight: bold; /* Text îngroșat pentru titlu */
+}
+
+.contact-section p {
+  margin-bottom: 10px; /* Spațiere inferioară pentru paragrafe */
+}
+
+.contact-details {
+  margin-bottom: 20px; /* Spațiere inferioară pentru detalii de contact */
+}
+
+/* Layout pentru AdminDashboard.js */
+.dashboard-container {
+  background-size: cover; /* Acoperire completă a fundalului */
+  padding: 50px 0; /* Spațiere interioară pentru container */
+}
+
+.dashboard-button {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16); /* Umbra pentru buton */
+  transition: transform 0.2s ease-in-out; /* Tranziție pentru transformare */
+}
+
+.dashboard-button:hover {
+  transform: translateY(-3px); /* Deplasare verticală la hover */
+}
+
+/* Layout pentru butonul Back */
+.back-button {
+  position: fixed; 
+  top: 20px; /* Distanță de sus */
+  right: 20px; /* Distanță de dreapta */
+  display: inline-block; 
+  font-weight: bold;
+  background-color: #f8f9fa; 
+  color: #333; 
+  border: 1px solid #ccc; 
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  padding: 10px 20px; 
+  border-radius: 5px; /* Rotunjirea colțurilor butonului */
+  cursor: pointer; /* Schimbarea cursorului pentru a indica faptul că este clicabil */
+}
+
+.back-button:hover {
+  background-color: #e2e6ea; /* Fundal gri deschis la hover */
+  color: #000; /* Text negru la hover */
+  text-decoration: none; /* Eliminarea sublinierii textului la hover */
+}
+
+/* Layout pentru GymsPage.js */
+
+.container-background {
+  background-color: #f8f9fa; /* Fundal gri deschis */
+}
+.gyms-list {
+  padding: 20px; /* Spațiere interioară */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.gym-card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Umbra pentru card */
+  transition: transform 0.2s ease-in-out; /* Tranziție pentru transformare */
+}
+
+.gym-card:hover {
+  transform: translateY(-5px); /* Deplasare verticală la hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Umbra mai pronunțată la hover */
+}
+
+.gym-card img {
+  height: 200px; /* Înălțime fixă pentru imagini */
+  object-fit: cover; /* Potrivirea imaginii în container */
+}
+
+/* Stiluri pentru butonul de profil și dropdown */
+.profile-icon-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa;
+}
+
+.dropdown-item {
+  color: #333;
+}
+
+.dropdown-item:hover {
+  background-color: #e2e6ea;
+}
+
+/* Layout pentru LoginPage.js, SignUpPage.js, ForgotPasswordPage.js, ResetPasswordPage.js */
+.App {
+  background-color: white;
+}
+
+.Auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.Auth-form {
+  width: 420px;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.Auth-form-content {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+.Auth-form-title {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 24px;
+  color: rgb(34, 34, 34);
+  font-weight: 800;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+}
+
+/* Layout pentru Time Slots Page */
+.time-slot-card {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.time-slot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.time-slot-title {
+  color: #007bff; 
+  font-weight: bold;
+}
+
+.time-slot-button {
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.time-slot-button:hover {
+  background-color: var(--hover-secondary-color); /* Verde închis la hover */
+}
+
+.time-slot-date {
+  font-style: italic;
+  color: #555;
+}
+
+:root {
+  --primary-color: #0a0a0a; /* Albastru */
+  --secondary-color: #28a745; /* Verde */
+  --hover-secondary-color: #218838; /* Verde închis */
+  --font-color: #333; /* Gri închis */
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  color: var(--font-color);
+}
+
+.timeslots-container {
+  background: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.timeslots-header {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+}
+
+.datepicker-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.time-slots-row {
+  justify-content: center;
+}
+
+.no-slots-message {
+  text-align: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.time-slot-col {
+  margin-bottom: 30px;
+}
+
+.time-slot-icon {
+  font-size: 24px;
+  color: var(--secondary-color);
+  margin-bottom: 10px;
+}
+
+.datepicker-custom {
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--secondary-color);
+}
+
+.time-slot-back-button {
+  position: fixed; 
+  top: 30px; /* Distanță de sus */
+  right: 120px; /* Distanță de dreapta */
+  display: inline-block; 
+  font-weight: bold;
+  background-color: #f8f9fa; 
+  color: #333; 
+  border: 1px solid #ccc; 
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  padding: 10px 20px; 
+  border-radius: 5px; /* Rotunjirea colțurilor butonului */
+  cursor: pointer; /* Schimbarea cursorului pentru a indica faptul că este clicabil */
+}
+
+/* Stiluri pentru pagina de confirmare a rezervării */
+.booking-confirmation-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.booking-confirmation-title {
+  margin-bottom: 2rem;
+  color: #333;
+  font-size: 2rem;
+}
+
+.booking-confirmation-button {
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.75rem 2rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.booking-confirm {
+  background-color: #4caf50; /* Verde */
+  color: white;
+}
+
+.booking-confirm:hover {
+  background-color: #45a049; /* Un verde puțin mai închis */
+}
+
+.booking-cancel:hover {
+  background-color: #d32f2f; /* Un roșu puțin mai închis */
+}
+
+.booking-alert-message {
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 600px; 
+}
+
+.booking-details {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-details .time-slot-date,
+.booking-details .time-slot-interval {
+  font-size: 16px; 
+  color: #333; 
+  background-color: #f7f7f7; 
+  border: 1px solid #ddd; 
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px; 
+}
+
+.booking-details .time-slot-date:hover,
+.booking-details .time-slot-interval:hover {
+  background-color: #e9ecef; /* Schimbarea culorii de fundal la hover */
+}
