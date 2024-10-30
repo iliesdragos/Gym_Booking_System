@@ -17,8 +17,14 @@ The Gym Booking System provides a platform for employees to reserve gym slots in
 ## Features
 
 - **User Registration and Login**: Employees register using their corporate email, ensuring secure access.
+  ![Login and Registration Page](link-to-login-registration-image)
+
 - **Real-time Booking System**: View available fitness locations, select a slot, and book a gym session.
+  ![Booking Interface](link-to-booking-interface-image)
+
 - **Admin Dashboard**: Manage gym details, users, and booking schedules with ease.
+  ![Admin Dashboard](link-to-admin-dashboard-image)
+
 - **Password Recovery via SendGrid**: Allows users to reset their password through an email link for added security.
 - **Data Security**: Encrypted passwords and secure data handling.
 
@@ -93,12 +99,6 @@ Here is a visual representation of the Entity-Relationship Diagram (ERD):
      cd front-end
      npm start
      ```
-
-## Usage
-
-- **Registration and Login**: Users can sign up using their company email.
-- **Booking a Slot**: Select a gym and time slot. The system verifies capacity before confirming the booking.
-- **Admin Features**: Accessible to administrators for managing gyms, users, and bookings.
 
 ## Future Improvements
 
