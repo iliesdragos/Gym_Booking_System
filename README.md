@@ -12,10 +12,7 @@
 
 ## Project Overview
 
-The **Gym Booking System** is a web application designed to streamline gym access and manage employee reservations for fitness facilities within a company. It allows employees to book gym slots, helping prevent overcrowding and ensuring an organized, efficient reservation process.
-
-## Description
-The Gym Booking System provides a platform for employees to reserve gym slots in different locations based on their preferences. Users can view available gym centers, check time slots, and make reservations, while administrators can manage gyms, view reservations, and monitor the booking system.
+The **Gym Booking System** is a web application designed to streamline gym access and manage employee reservations for fitness facilities within a company. It allows employees to book gym slots, helping prevent overcrowding and ensuring an organized, efficient reservation process. This platform helps employees to reserve gym slots in different locations based on their preferences. Users can view available gym centers, check time slots, and make reservations, while administrators can manage gyms, view reservations, and monitor the booking system.
 
 ## Features
 
