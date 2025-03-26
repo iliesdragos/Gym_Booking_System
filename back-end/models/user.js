@@ -1,7 +1,6 @@
 const bcrypt = require("bcrypt");
 const pool = require("../lib/database");
 
-// Funcție pentru crearea unui utilizator nou
 const createUser = async ({ email, name, password }) => {
   try {
     // Hash-uirea parolei pentru a o proteja în baza de date
@@ -15,24 +14,19 @@ const createUser = async ({ email, name, password }) => {
       hashedPassword,
       defaultRole,
     ]);
-    // Returnează detaliile utilizatorului nou creat
     return { id: result.insertId, email, name, role: defaultRole };
   } catch (error) {
-    // Tratarea erorilor și aruncarea acestora pentru a fi gestionate de funcțiile apelante
     throw error;
   }
 };
 
-// Funcție pentru găsirea unui utilizator după ID
 const findUserById = async (userId) => {
   try {
     const sql = "SELECT * FROM users WHERE id = ?";
     const [rows] = await pool.query(sql, [userId]);
     if (rows.length > 0) {
-      // Returnează primul utilizator găsit (dacă există)
       return rows[0];
     } else {
-      // Returnează null dacă utilizatorul nu este găsit
       return null;
     }
   } catch (error) {
@@ -40,16 +34,13 @@ const findUserById = async (userId) => {
   }
 };
 
-// Funcție pentru găsirea unui utilizator după email
 const findUserByEmail = async (email) => {
   try {
     const sql = "SELECT * FROM users WHERE email = ? LIMIT 1";
     const [rows] = await pool.query(sql, [email]);
     if (rows.length > 0) {
-      // Returnează primul utilizator găsit (dacă există)
       return rows[0];
     } else {
-      // Returnează null dacă utilizatorul nu este găsit
       return null;
     }
   } catch (error) {
@@ -57,12 +48,10 @@ const findUserByEmail = async (email) => {
   }
 };
 
-// Funcție pentru a găsi toți utilizatorii
 const findAllUsers = async () => {
   try {
     const sql = "SELECT * FROM users";
     const [rows] = await pool.query(sql);
-    // Returnează toți utilizatorii
     return rows;
   } catch (error) {
     throw error;
@@ -101,19 +90,16 @@ const updateUser = async (userId, updateFields) => {
   sqlValues.push(userId); // Adăugarea ID-ului utilizatorului la sfârșitul listei de valori pentru interogare
   try {
     const [result] = await pool.query(sql, sqlValues);
-    // Returnează true dacă actualizarea a fost efectuată cu succes
     return result.affectedRows > 0;
   } catch (error) {
     throw error;
   }
 };
 
-// Funcție pentru ștergerea unui utilizator
 const deleteUser = async (userId) => {
   try {
     const sql = "DELETE FROM users WHERE id = ?";
     const [result] = await pool.query(sql, [userId]);
-    // Returnează true dacă ștergerea a fost efectuată cu succes
     return result.affectedRows > 0;
   } catch (error) {
     throw error;
@@ -127,7 +113,6 @@ const setResetPasswordToken = async (email, token) => {
     const sql =
       "UPDATE users SET resetPasswordToken = ?, resetPasswordExpires = ? WHERE email = ?";
     const [result] = await pool.query(sql, [token, expires, email]);
-    // Returnează true dacă token-ul a fost setat cu succes
     return result.affectedRows > 0;
   } catch (error) {
     throw error;
@@ -141,10 +126,8 @@ const getResetPasswordToken = async (token) => {
       "SELECT * FROM users WHERE resetPasswordToken = ? AND resetPasswordExpires > ?";
     const [rows] = await pool.query(sql, [token, Date.now()]);
     if (rows.length > 0) {
-      // Returnează primul utilizator găsit (dacă există)
       return rows[0];
     } else {
-      // Returnează null dacă token-ul nu este găsit sau a expirat
       return null;
     }
   } catch (error) {
@@ -160,7 +143,6 @@ const resetPassword = async (userId, newPassword) => {
     const sql =
       "UPDATE users SET password = ?, resetPasswordToken = NULL, resetPasswordExpires = NULL WHERE id = ?";
     const [result] = await pool.query(sql, [hashedPassword, userId]);
-    // Returnează true dacă resetarea parolei a fost efectuată cu succes
     return result.affectedRows > 0;
   } catch (error) {
     throw error;

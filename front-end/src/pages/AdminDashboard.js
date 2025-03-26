@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import { Link, useNavigate } from "react-router-dom"; // Importăm Link și useNavigate din react-router-dom
+import { Container, Row, Col, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 
 function AdminDashboard() {
   const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
@@ -57,4 +57,4 @@ function AdminDashboard() {
   );
 }
 
-export default AdminDashboard; // Exportăm componenta AdminDashboard
+export default AdminDashboard;

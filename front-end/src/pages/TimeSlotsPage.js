@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Importăm useParams și useNavigate pentru navigarea programatică
-import { Container, Row, Col, Card, Button } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import { FaCalendarCheck } from "react-icons/fa"; // Importăm o pictogramă specifică din react-icons
-import DatePicker from "react-datepicker"; // Importăm componenta DatePicker
-import "react-datepicker/dist/react-datepicker.css"; // Importăm stilurile pentru DatePicker
-import moment from "moment"; // Importăm moment pentru manipularea datei și orei
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
+import { useParams, useNavigate } from "react-router-dom";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { FaCalendarCheck } from "react-icons/fa";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import axios from "axios";
 
 const API_URL = "http://localhost:3001/api/timeslots"; // URL-ul API-ului pentru intervalele orare
 
@@ -19,15 +19,15 @@ export const fetchAvailableTimeSlots = async (gymId, date) => {
     return response.data;
   } catch (error) {
     console.error("Eroare la preluarea intervalelor orare disponibile:", error);
-    throw error; // Propagăm eroarea pentru a putea fi tratată în altă parte
+    throw error;
   }
 };
 
 function TimeSlotsPage() {
   const { gymId } = useParams(); // Obținem gymId din parametrii URL-ului
-  const [timeSlots, setTimeSlots] = useState([]); // Starea pentru lista de intervale de timp
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Starea pentru data selectată
-  const navigate = useNavigate(); // Hook pentru gestionarea navigării
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchSlots = async () => {
@@ -77,7 +77,7 @@ function TimeSlotsPage() {
   };
 
   const handleBack = () => {
-    navigate("/gyms"); // Navigăm înapoi la pagina sălilor de fitness
+    navigate("/gyms");
   };
 
   return (
@@ -133,4 +133,4 @@ function TimeSlotsPage() {
   );
 }
 
-export default TimeSlotsPage; // Exportăm componenta TimeSlotsPage
+export default TimeSlotsPage;

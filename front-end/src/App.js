@@ -54,4 +54,4 @@ function App() {
   );
 }
 
-export default App; // Exportăm componenta principală a aplicației
+export default App;

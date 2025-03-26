@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
+import axios from "axios";
 import {
   Button,
   Card,
@@ -9,8 +9,8 @@ import {
   Modal,
   Dropdown,
   Form,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:3001/api/gyms"; // Definim URL-ul API-ului pentru sălile de fitness
 
@@ -21,22 +21,22 @@ const fetchGyms = async () => {
     return response.data;
   } catch (error) {
     console.error("Eroare la preluarea sălilor de fitness:", error);
-    throw error; // Propagăm eroarea pentru a putea fi tratată în altă parte
+    throw error;
   }
 };
 
 function GymsPage() {
-  const [gyms, setGyms] = useState([]); // Starea pentru sălile de fitness
-  const [showProfileModal, setShowProfileModal] = useState(false); // Starea pentru afișarea modalului de profil
+  const [gyms, setGyms] = useState([]);
+  const [showProfileModal, setShowProfileModal] = useState(false);
   const [profileData, setProfileData] = useState({
     email: "",
     name: "",
     newPassword: "",
-  }); // Starea pentru datele profilului
-  const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
-  const [nextBooking, setNextBooking] = useState(null); // Starea pentru următoarea rezervare
-  const [showNoBookingModal, setShowNoBookingModal] = useState(false); // Starea pentru afișarea modalului de rezervare inexistentă
-  const userId = localStorage.getItem("userId"); // Obținem ID-ul utilizatorului din localStorage
+  });
+  const navigate = useNavigate();
+  const [nextBooking, setNextBooking] = useState(null);
+  const [showNoBookingModal, setShowNoBookingModal] = useState(false);
+  const userId = localStorage.getItem("userId");
 
   // Funcție pentru formatarea datei
   const formatDate = (dateString) => {
@@ -276,4 +276,4 @@ function GymsPage() {
   );
 }
 
-export default GymsPage; // Exportăm componenta GymsPage
+export default GymsPage;

@@ -4,7 +4,6 @@ const sgMail = require("@sendgrid/mail");
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const crypto = require("crypto");
 
-// Înregistrarea unui utilizator nou
 const registerUser = async (req, res) => {
   const { email, name, password } = req.body;
 
@@ -15,7 +14,6 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Email is already registered." });
     }
 
-    // Creează utilizatorul și returnează ID-ul acestuia
     const userId = await User.createUser({ email, name, password });
     res.status(201).json({ message: "User successfully created!", userId });
   } catch (error) {
@@ -23,7 +21,6 @@ const registerUser = async (req, res) => {
   }
 };
 
-// Autentificarea utilizatorului
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -56,7 +53,6 @@ const loginUser = async (req, res) => {
   }
 };
 
-// Deconectarea utilizatorului
 const logoutUser = (req, res) => {
   req.session.destroy((err) => {
     if (err) {
@@ -67,7 +63,6 @@ const logoutUser = (req, res) => {
   });
 };
 
-// Obținerea profilului utilizatorului curent
 const getProfile = async (req, res) => {
   try {
     const userId = req.session.userId;
@@ -75,13 +70,12 @@ const getProfile = async (req, res) => {
     if (!user) {
       return res.status(404).json({ message: "User not found." });
     }
-    res.status(200).json(user); // Returnează profilul utilizatorului
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-
-// Actualizarea profilului utilizatorului curent
+t;
 const updateProfile = async (req, res) => {
   const { email, name, newPassword } = req.body;
   const userId = req.session.userId;
@@ -120,17 +114,15 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// Listarea tuturor utilizatorilor
 const listAllUsers = async (req, res) => {
   try {
     const users = await User.findAllUsers();
-    res.status(200).json(users); // Returnează lista de utilizatori
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// Actualizarea unui utilizator specific
 const updateUser = async (req, res) => {
   const { id } = req.params;
   const { email, name, password, role } = req.body;
@@ -163,7 +155,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-// Ștergerea unui utilizator specific
 const deleteUser = async (req, res) => {
   const { id } = req.params;
 
@@ -186,7 +177,6 @@ const generateResetToken = () => {
   return crypto.randomBytes(20).toString("hex");
 };
 
-// Solicitare de resetare a parolei
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
   const user = await User.findUserByEmail(email);
@@ -217,7 +207,6 @@ const forgotPassword = async (req, res) => {
     });
 };
 
-// Resetarea parolei utilizatorului
 const resetPassword = async (req, res) => {
   const { token, password } = req.body;
   try {
@@ -227,10 +216,9 @@ const resetPassword = async (req, res) => {
       return res.status(400).send("Invalid or expired token.");
     }
 
-    // Resetează parola
     const success = await User.resetPassword(user.id, password);
     if (success) {
-      res.send("Password has been successfully reset."); // Returnează mesaj de succes
+      res.send("Password has been successfully reset.");
     } else {
       res.status(500).send("Password reset failed.");
     }

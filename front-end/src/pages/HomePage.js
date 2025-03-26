@@ -6,13 +6,12 @@ import {
   Col,
   Accordion,
   Carousel,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function HomePage() {
-  let navigate = useNavigate(); // Inițializăm hook-ul useNavigate pentru navigarea programatică
+  let navigate = useNavigate();
 
-  // Stilul pentru fundalul secțiunii de întâmpinare
   const backgroundStyle = {
     backgroundImage: "url('/imagine2.jpg')",
     backgroundRepeat: "no-repeat",
@@ -323,4 +322,4 @@ function HomePage() {
   );
 }
 
-export default HomePage; // Exportăm componenta HomePage
+export default HomePage;

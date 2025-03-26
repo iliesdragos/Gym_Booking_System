@@ -7,22 +7,22 @@ import {
   Form,
   Row,
   Col,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
+} from "react-bootstrap";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function UsersCRUD() {
-  const [users, setUsers] = useState([]); // Starea pentru lista de utilizatori
-  const [loading, setLoading] = useState(false); // Starea pentru indicatorul de încărcare
-  const [showModal, setShowModal] = useState(false); // Starea pentru afișarea modalului
-  const navigate = useNavigate(); // Hook pentru gestionarea navigării
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState({
     id: "",
     email: "",
     name: "",
     password: "",
     role: "",
-  }); // Starea pentru utilizatorul curent (pentru adăugare/editare)
+  });
 
   useEffect(() => {
     fetchUsers(); // Preluăm lista de utilizatori la montarea componentei
@@ -74,7 +74,6 @@ function UsersCRUD() {
     const userToSave = { ...currentUser };
 
     if (currentUser.id) {
-      // Actualizăm utilizatorul existent
       try {
         await axios.put(`/api/users/update/${currentUser.id}`, userToSave);
         await fetchUsers();
@@ -82,7 +81,6 @@ function UsersCRUD() {
         console.error("Error updating user:", error);
       }
     } else {
-      // Adăugăm un utilizator nou
       try {
         await axios.post("/api/users/register", userToSave);
         await fetchUsers();
@@ -93,7 +91,6 @@ function UsersCRUD() {
     closeModal();
   };
 
-  // Funcția pentru a șterge un utilizator
   const handleDelete = async (userId) => {
     try {
       await axios.delete(`/api/users/delete/${userId}`);
@@ -104,7 +101,7 @@ function UsersCRUD() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Afișăm un mesaj de încărcare dacă datele sunt în curs de preluare
+    return <div>Loading...</div>;
   }
 
   return (
@@ -217,4 +214,4 @@ function UsersCRUD() {
   );
 }
 
-export default UsersCRUD; // Exportăm componenta UsersCRUD
+export default UsersCRUD;

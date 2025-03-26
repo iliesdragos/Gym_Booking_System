@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { Container, Alert, Form } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import { useNavigate, Link } from "react-router-dom"; // Importăm useNavigate și Link pentru navigarea programatică
+import axios from "axios";
+import { Container, Alert, Form } from "react-bootstrap";
+import { useNavigate, Link } from "react-router-dom";
 
 function SignUpPage() {
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
-  }); // Starea pentru datele utilizatorului
-  const [error, setError] = useState(""); // Starea pentru gestionarea mesajelor de eroare
-  const [success, setSuccess] = useState(false); // Starea pentru gestionarea succesului operațiunii
-  const navigate = useNavigate(); // Hook pentru gestionarea navigării
+  });
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   // Funcție pentru actualizarea stării utilizatorului la schimbarea inputurilor
   const handleChange = (e) => {
@@ -20,25 +20,23 @@ function SignUpPage() {
 
   // Funcție pentru trimiterea formularului de înregistrare
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previne comportamentul implicit al formularului
-    setError(""); // Resetează mesajul de eroare la fiecare încercare
+    e.preventDefault();
+    setError("");
     try {
-      // Trimite cererea de înregistrare la server
       const response = await axios.post(
         "http://localhost:3001/api/users/register",
         user
       );
       console.log(response.data);
-      setSuccess(true); // Actualizează starea pentru a reflecta succesul operațiunii
+      setSuccess(true);
       setTimeout(() => navigate("/login"), 2000); // Redirecționează către pagina de login după 2 secunde
     } catch (error) {
-      // Gestionează erorile din cerere
       if (error.response && error.response.data) {
-        setError(error.response.data.message); // Setează mesajul de eroare primit de la server
+        setError(error.response.data.message);
       } else {
-        setError("Eroare la înregistrare. Încearcă din nou."); // Setează un mesaj de eroare generic
+        setError("Eroare la înregistrare. Încearcă din nou.");
       }
-      setSuccess(false); // Asigură-te că starea de succes este falsă
+      setSuccess(false);
     }
   };
 
@@ -110,4 +108,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage; // Exportăm componenta SignUpPage
+export default SignUpPage;

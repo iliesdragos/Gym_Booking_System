@@ -83,5 +83,4 @@ async function generateTimeSlotsForAllGyms() {
   }
 }
 
-// Apelează funcția pentru a genera intervalele de timp
 generateTimeSlotsForAllGyms();

@@ -1,7 +1,6 @@
 const Booking = require("../models/booking");
 const TimeSlot = require("../models/timeSlot");
 
-// Funcție pentru crearea unei noi rezervări
 const createBooking = async (req, res) => {
   try {
     const { user_id, timeslots_id, status } = req.body;
@@ -33,10 +32,8 @@ const createBooking = async (req, res) => {
   }
 };
 
-// Funcție pentru obținerea tuturor rezervărilor
 const getAllBookings = async (req, res) => {
   try {
-    // Returnează toate rezervările
     const bookings = await Booking.getAllBookings();
     res.status(200).json(bookings);
   } catch (error) {
@@ -44,7 +41,6 @@ const getAllBookings = async (req, res) => {
   }
 };
 
-// Funcție pentru actualizarea unei rezervări
 const updateBooking = async (req, res) => {
   try {
     // Extrage statusul dorit și ID-ul rezervării din cererea PUT
@@ -72,10 +68,8 @@ const updateBooking = async (req, res) => {
   }
 };
 
-// Funcție pentru ștergerea unei rezervări
 const deleteBooking = async (req, res) => {
   try {
-    // Șterge rezervarea și returnează true dacă a avut succes
     const success = await Booking.deleteBooking(req.params.id);
     if (success) {
       return res.status(200).json({ message: "Booking deleted successfully!" });
@@ -125,7 +119,6 @@ const cancelBooking = async (req, res) => {
   }
 };
 
-// Funcție pentru obținerea următoarei rezervări pentru un utilizator
 const getNextBooking = async (req, res) => {
   try {
     const userId = req.params.userId;
@@ -141,10 +134,8 @@ const getNextBooking = async (req, res) => {
   }
 };
 
-// Funcție pentru obținerea detaliilor unei rezervări după ID
 const getDetailedBookingById = async (req, res) => {
   try {
-    // Returnează detaliile rezervării
     const detailedBooking = await Booking.getDetailedBookingById(req.params.id);
     if (detailedBooking) {
       res.status(200).json(detailedBooking);

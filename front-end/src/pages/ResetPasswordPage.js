@@ -1,25 +1,25 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { useParams, useNavigate } from "react-router-dom"; // Importăm useParams și useNavigate pentru navigarea programatică
-import { Alert, Container } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
+import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
+import { Alert, Container } from "react-bootstrap";
 
 function ResetPasswordPage() {
-  const { token } = useParams(); // Obținem token-ul din URL
-  const [password, setPassword] = useState(""); // Starea pentru noua parolă
-  const [confirmPassword, setConfirmPassword] = useState(""); // Starea pentru confirmarea parolei
-  const [message, setMessage] = useState(""); // Starea pentru mesajele de succes
-  const [error, setError] = useState(""); // Starea pentru mesajele de eroare
-  const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
+  const { token } = useParams();
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   // Funcția pentru a trimite cererea de resetare a parolei la server
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Previne comportamentul implicit al formularului
+    e.preventDefault();
     if (password !== confirmPassword) {
-      setError("Passwords do not match. Please try again."); // Afișăm mesaj de eroare dacă parolele nu se potrivesc
-      return; // Încheiem execuția dacă parolele nu se potrivesc
+      setError("Passwords do not match. Please try again.");
+      return;
     }
-    setMessage(""); // Resetăm mesajele de succes anterioare
-    setError(""); // Resetăm mesajele de eroare anterioare
+    setMessage("");
+    setError("");
     try {
       // Trimitem cererea de resetare a parolei la server
       const response = await axios.post(
@@ -30,10 +30,9 @@ function ResetPasswordPage() {
         }
       );
       console.log(response.data);
-      setMessage("Your password has been successfully changed."); // Afișăm mesaj de succes
+      setMessage("Your password has been successfully changed.");
       setTimeout(() => navigate("/login"), 3000); // Redirecționăm utilizatorul la pagina de login după 3 secunde
     } catch (error) {
-      // Gestionează erorile din cerere (de exemplu, token expirat sau invalid)
       if (error.response && error.response.data) {
         setError(
           error.response.data.message || "An error occurred, please try again."
@@ -62,9 +61,9 @@ function ResetPasswordPage() {
                 id="password"
                 name="password"
                 placeholder="Enter new password"
-                value={password} // Setăm valoarea input-ului password din starea password
-                onChange={(e) => setPassword(e.target.value)} // Actualizăm starea password la fiecare modificare
-                required // Marcăm câmpul ca fiind obligatoriu
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
               />
             </div>
             <div className="form-group mt-3">
@@ -75,9 +74,9 @@ function ResetPasswordPage() {
                 id="confirmPassword"
                 name="confirmPassword"
                 placeholder="Confirm new password"
-                value={confirmPassword} // Setăm valoarea input-ului confirmPassword din starea confirmPassword
-                onChange={(e) => setConfirmPassword(e.target.value)} // Actualizăm starea confirmPassword la fiecare modificare
-                required // Marcăm câmpul ca fiind obligatoriu
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
               />
             </div>
             <div className="d-grid gap-2 mt-3">
@@ -92,4 +91,4 @@ function ResetPasswordPage() {
   );
 }
 
-export default ResetPasswordPage; // Exportăm componenta ResetPasswordPage
+export default ResetPasswordPage;

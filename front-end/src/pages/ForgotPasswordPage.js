@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { Alert, Container } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
+import axios from "axios";
+import { Alert, Container } from "react-bootstrap";
 
 function ForgotPasswordPage() {
-  const [email, setEmail] = useState(""); // Starea pentru email
-  const [message, setMessage] = useState(""); // Starea pentru mesajele de succes
-  const [error, setError] = useState(""); // Starea pentru mesajele de eroare
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   // Funcția de submit pentru trimiterea cererii de resetare a parolei
   const handleSubmit = async (e) => {
@@ -17,9 +17,9 @@ function ForgotPasswordPage() {
       await axios.post("http://localhost:3001/api/users/forgot-password", {
         email,
       });
-      setMessage("An email to reset your password has been sent."); // Setăm mesajul de succes
+      setMessage("An email to reset your password has been sent.");
     } catch (error) {
-      setError("An error occurred, please try again."); // Setăm mesajul de eroare
+      setError("An error occurred, please try again.");
     }
   };
 
@@ -45,9 +45,9 @@ function ForgotPasswordPage() {
                 id="email"
                 name="email"
                 placeholder="Enter email"
-                value={email} // Setăm valoarea input-ului email din starea email
-                onChange={(e) => setEmail(e.target.value)} // Actualizăm starea email la fiecare modificare
-                required // Marcăm câmpul ca fiind obligatoriu
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
               />
             </div>
             <div className="d-grid gap-2 mt-3">
@@ -62,4 +62,4 @@ function ForgotPasswordPage() {
   );
 }
 
-export default ForgotPasswordPage; // Exportăm componenta ForgotPasswordPage
+export default ForgotPasswordPage;

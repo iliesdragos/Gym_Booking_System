@@ -1,6 +1,5 @@
 const pool = require("../lib/database");
 
-// Funcție pentru crearea unui nou interval de timp
 const createTimeSlot = async (timeSlot) => {
   const { gym_id: gymId, startTime, endTime, date, reservedCount } = timeSlot;
   const sql =
@@ -13,38 +12,32 @@ const createTimeSlot = async (timeSlot) => {
       date,
       reservedCount,
     ]);
-    // Returnează ID-ul intervalului de timp nou creat
     return result.insertId;
   } catch (error) {
     throw error;
   }
 };
 
-// Funcție pentru obținerea tuturor intervalelor de timp
 const getAllTimeSlots = async () => {
   const sql = "SELECT * FROM timeslots";
   try {
     const [rows] = await pool.query(sql);
-    // Returnează toate intervalele de timp
     return rows;
   } catch (error) {
     throw error;
   }
 };
 
-// Funcție pentru obținerea unui interval de timp după ID
 const getTimeSlotById = async (timeSlotId) => {
   const sql = "SELECT * FROM timeslots WHERE id = ?";
   try {
     const [rows] = await pool.query(sql, [timeSlotId]);
-    // Returnează primul rezultat (dacă există)
     return rows[0];
   } catch (error) {
     throw error;
   }
 };
 
-// Funcție pentru actualizarea unui interval de timp
 const updateTimeSlot = async (timeSlotId, updatedTimeSlot) => {
   const {
     gym_id: gymId,
@@ -111,19 +104,16 @@ const getAvailableTimeSlotsForGym = async (gymId, date) => {
   `;
   try {
     const [rows] = await pool.query(sql, [date, gymId, date]);
-    // Returnează intervalele de timp disponibile
     return rows;
   } catch (error) {
     throw error;
   }
 };
 
-// Funcție pentru ștergerea unui interval de timp
 const deleteTimeSlot = async (timeSlotId) => {
   const sql = "DELETE FROM timeslots WHERE id = ?";
   try {
     await pool.query(sql, [timeSlotId]);
-    // Returnează true dacă ștergerea a fost efectuată
     return true;
   } catch (error) {
     throw error;
@@ -135,7 +125,6 @@ const incrementReservedCount = async (timeSlotId) => {
   const sql = `UPDATE timeslots SET reservedCount = reservedCount + 1 WHERE id = ?`;
   try {
     const [result] = await pool.query(sql, [timeSlotId]);
-    // Returnează true dacă actualizarea a fost efectuată
     return result.affectedRows === 1;
   } catch (error) {
     throw error;
@@ -147,7 +136,6 @@ const decrementReservedCount = async (timeSlotId) => {
   const sql = `UPDATE timeslots SET reservedCount = reservedCount - 1 WHERE id = ? AND reservedCount > 0`;
   try {
     const [result] = await pool.query(sql, [timeSlotId]);
-    // Returnează true dacă actualizarea a fost efectuată
     return result.affectedRows === 1;
   } catch (error) {
     throw error;

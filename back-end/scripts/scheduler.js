@@ -20,7 +20,6 @@ const startBookingCleanupTask = () => {
   });
 };
 
-// Exportă funcția pentru a fi utilizată în alte module
 module.exports = {
   startBookingCleanupTask,
 };

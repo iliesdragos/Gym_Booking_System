@@ -6,11 +6,10 @@ const {
 } = require("./timeSlot");
 const { getGymById } = require("./gym");
 
-// Funcție pentru crearea unei rezervări noi
 const createBooking = async (booking) => {
   const { user_id: userId, timeslots_id: timeSlotId, status } = booking;
 
-  await pool.query("START TRANSACTION"); // Începe o tranzacție
+  await pool.query("START TRANSACTION");
 
   try {
     // Verifică dacă utilizatorul are deja o rezervare activă
@@ -48,35 +47,30 @@ const createBooking = async (booking) => {
 
     // Incrementează numărul de rezervări pentru intervalul de timp
     await incrementReservedCount(timeSlotId);
-    await pool.query("COMMIT"); // Încheie tranzacția cu succes
+    await pool.query("COMMIT");
 
     // Returnează ID-ul rezervării nou create
     return result.insertId;
   } catch (error) {
-    await pool.query("ROLLBACK"); // Revocă tranzacția dacă apare o eroare
+    await pool.query("ROLLBACK");
     throw error;
   }
 };
 
-// Funcție pentru obținerea tuturor rezervărilor
 const getAllBookings = async () => {
   const sql = "SELECT * FROM bookings";
   const [rows] = await pool.query(sql);
-  // Returnează toate rezervările
   return rows;
 };
 
-// Funcție pentru obținerea unei rezervări după ID
 const getBookingById = async (bookingId) => {
   const sql = "SELECT * FROM bookings WHERE id = ?";
   const [rows] = await pool.query(sql, [bookingId]);
-  // Returnează primul rezultat (dacă există)
   return rows[0];
 };
 
-// Funcție pentru actualizarea unei rezervări
 const updateBooking = async (bookingId, updatedBooking) => {
-  await pool.query("START TRANSACTION"); // Începe o tranzacție
+  await pool.query("START TRANSACTION");
 
   try {
     const {
@@ -144,11 +138,10 @@ const updateBooking = async (bookingId, updatedBooking) => {
       await decrementReservedCount(timeSlotId);
     }
 
-    await pool.query("COMMIT"); // Confirmă tranzacția
-    // Returnează true dacă actualizarea a fost efectuată cu succes
+    await pool.query("COMMIT");
     return true;
   } catch (error) {
-    await pool.query("ROLLBACK"); // Revocă în caz de eroare
+    await pool.query("ROLLBACK");
     throw error;
   }
 };
@@ -159,21 +152,17 @@ const getOldPendingBookings = async () => {
   const sql =
     "SELECT * FROM bookings WHERE status = 'pending' AND createdAt < ?";
   const [oldBookings] = await pool.query(sql, [fiveMinutesAgo]);
-  // Returnează rezervările vechi în așteptare
   return oldBookings;
 };
 
-// Actualizarea statusului unei rezervări
 const updateBookingStatus = async (bookingId, newStatus) => {
   const sql = "UPDATE bookings SET status = ? WHERE id = ?";
   const [result] = await pool.query(sql, [newStatus, bookingId]);
-  // Returnează true dacă statusul a fost actualizat
   return result.changedRows > 0;
 };
 
-// Funcție pentru ștergerea unei rezervări
 const deleteBooking = async (bookingId) => {
-  await pool.query("START TRANSACTION"); // Începe o tranzacție
+  await pool.query("START TRANSACTION");
 
   try {
     const booking = await getBookingById(bookingId);
@@ -192,16 +181,14 @@ const deleteBooking = async (bookingId) => {
     const sql = "DELETE FROM bookings WHERE id = ?";
     await pool.query(sql, [bookingId]);
 
-    await pool.query("COMMIT"); // Confirmă tranzacția
-    // Returnează true dacă ștergerea a fost efectuată cu succes
+    await pool.query("COMMIT");
     return true;
   } catch (error) {
-    await pool.query("ROLLBACK"); // Revocă în caz de eroare
+    await pool.query("ROLLBACK");
     throw error;
   }
 };
 
-// Funcție pentru obținerea următoarei rezervări pentru un utilizator
 const getNextBookingForUser = async (userId) => {
   const sql = `SELECT b.*, g.location 
     FROM bookings AS b
@@ -210,11 +197,9 @@ const getNextBookingForUser = async (userId) => {
     ORDER BY b.date ASC, b.startTime ASC
     LIMIT 1`;
   const [rows] = await pool.query(sql, [userId]);
-  // Returnează următoarea rezervare confirmată pentru utilizator
   return rows[0];
 };
 
-// Funcție pentru obținerea detaliilor unei rezervări după ID
 const getDetailedBookingById = async (bookingId) => {
   const sql = `
   SELECT bookings.*, gyms.location, timeslots.startTime, timeslots.endTime
@@ -223,7 +208,6 @@ const getDetailedBookingById = async (bookingId) => {
   JOIN timeslots ON bookings.timeslots_id = timeslots.id
   WHERE bookings.id = ?`;
   const [rows] = await pool.query(sql, [bookingId]);
-  // Returnează detaliile rezervării
   return rows[0];
 };
 
@@ -237,11 +221,9 @@ const hasActiveBooking = async (userId) => {
   AND (bookings.status = 'pending' OR bookings.status = 'confirmed')
   AND (timeslots.date > CURDATE() OR (timeslots.date = CURDATE() AND timeslots.endTime > CURTIME()))`;
   const [rows] = await pool.query(sql, [userId]);
-  // Returnează true dacă utilizatorul are o rezervare activă
   return rows[0].activeBookings > 0;
 };
 
-// Anulează o rezervare după ID
 const cancelBookingById = async (bookingId) => {
   const booking = await getBookingById(bookingId);
   if (!booking) throw new Error("Booking not found");
@@ -250,7 +232,6 @@ const cancelBookingById = async (bookingId) => {
   }
 
   await updateBookingStatus(bookingId, "cancelled");
-  // Nu returnează nimic
 };
 
 module.exports = {

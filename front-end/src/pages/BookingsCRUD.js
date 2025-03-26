@@ -7,21 +7,21 @@ import {
   Form,
   Row,
   Col,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import DatePicker from "react-datepicker"; // Importăm DatePicker pentru selectarea datelor
-import "react-datepicker/dist/react-datepicker.css"; // Importăm stilurile CSS pentru DatePicker
-import moment from "moment"; // Importăm moment pentru manipularea și formatarea datelor și orelor
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
+} from "react-bootstrap";
+import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 function BookingsCRUD() {
-  const [bookings, setBookings] = useState([]); // Starea pentru rezervări
-  const [loading, setLoading] = useState(false); // Starea pentru încărcare
-  const [showModal, setShowModal] = useState(false); // Starea pentru afișarea modalului
-  const [error, setErrorMessage] = useState(""); // Starea pentru mesajele de eroare
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Starea pentru data selectată
-  const [startTime, setStartTime] = useState(new Date()); // Starea pentru ora de început
-  const [endTime, setEndTime] = useState(new Date()); // Starea pentru ora de sfârșit
+  const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [error, setErrorMessage] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
   const [currentBooking, setCurrentBooking] = useState({
     id: "",
     user_id: "",
@@ -31,7 +31,7 @@ function BookingsCRUD() {
     startTime: "",
     endTime: "",
     status: "pending",
-  }); // Starea pentru rezervarea curentă
+  });
   const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
 
   // Folosim useEffect pentru a obține rezervările când componenta se montează
@@ -287,4 +287,4 @@ function BookingsCRUD() {
   );
 }
 
-export default BookingsCRUD; // Exportăm componenta BookingsCRUD
+export default BookingsCRUD;

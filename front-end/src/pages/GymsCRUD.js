@@ -7,21 +7,21 @@ import {
   Form,
   Row,
   Col,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
+} from "react-bootstrap";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function GymsCRUD() {
-  const [gyms, setGyms] = useState([]); // Starea pentru sălile de fitness
-  const [loading, setLoading] = useState(false); // Starea pentru încărcare
-  const [showModal, setShowModal] = useState(false); // Starea pentru afișarea modalului
-  const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
+  const [gyms, setGyms] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
   const [currentGym, setCurrentGym] = useState({
     id: "",
     location: "",
     capacity: "",
     description: "",
-  }); // Starea pentru sala de fitness curentă
+  });
 
   // Folosim useEffect pentru a obține sălile de fitness când componenta se montează
   useEffect(() => {
@@ -102,7 +102,7 @@ function GymsCRUD() {
   };
 
   if (loading) {
-    return <div>Loading...</div>; // Afișăm un mesaj de încărcare dacă datele sunt în curs de încărcare
+    return <div>Loading...</div>;
   }
 
   return (
@@ -188,7 +188,7 @@ function GymsCRUD() {
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => navigate("/admin-dashboard")} // Navigăm înapoi la dashboard-ul adminului
+            onClick={() => navigate("/admin-dashboard")}
             className="back-button"
           >
             Back to Dashboard
@@ -199,4 +199,4 @@ function GymsCRUD() {
   );
 }
 
-export default GymsCRUD; // Exportăm componenta GymsCRUD
+export default GymsCRUD;

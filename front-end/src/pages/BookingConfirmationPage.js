@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom"; // Importăm useParams și useNavigate din react-router-dom
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { Button, Container, Alert } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import moment from "moment"; // Importăm moment pentru manipularea și formatarea datelor și orelor
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Button, Container, Alert } from "react-bootstrap";
+import moment from "moment";
 
 function BookingConfirmationPage() {
   const { bookingId } = useParams(); // Extragem bookingId din URL
   const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
-  const [booking, setBooking] = useState({}); // Definim starea pentru detaliile rezervării
-  const [error, setError] = useState(""); // Definim starea pentru mesajele de eroare
+  const [booking, setBooking] = useState({});
+  const [error, setError] = useState("");
 
   // Folosim useEffect pentru a obține detaliile rezervării când componenta se montează
   useEffect(() => {
@@ -92,4 +92,4 @@ function BookingConfirmationPage() {
   );
 }
 
-export default BookingConfirmationPage; // Exportăm componenta BookingConfirmationPage
+export default BookingConfirmationPage;

@@ -7,22 +7,22 @@ import {
   Form,
   Row,
   Col,
-} from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
-import DatePicker from "react-datepicker"; // Importăm componenta DatePicker
-import "react-datepicker/dist/react-datepicker.css"; // Importăm stilurile pentru DatePicker
-import moment from "moment"; // Importăm moment pentru manipularea datei și orei
+} from "react-bootstrap";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from "moment";
 
 function TimeSlotsCRUD() {
-  const [timeSlots, setTimeSlots] = useState([]); // Starea pentru lista de intervale de timp
-  const [loading, setLoading] = useState(true); // Starea pentru încărcare
-  const [showModal, setShowModal] = useState(false); // Starea pentru vizibilitatea modalului
-  const navigate = useNavigate(); // Hook pentru gestionarea navigării
-  const [error, setErrorMessage] = useState(""); // Starea pentru mesajele de eroare
-  const [selectedDate, setSelectedDate] = useState(new Date()); // Starea pentru data selectată
-  const [startTime, setStartTime] = useState(new Date()); // Starea pentru ora de început
-  const [endTime, setEndTime] = useState(new Date()); // Starea pentru ora de sfârșit
+  const [timeSlots, setTimeSlots] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const [error, setErrorMessage] = useState("");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [startTime, setStartTime] = useState(new Date());
+  const [endTime, setEndTime] = useState(new Date());
   const [currentTimeSlot, setCurrentTimeSlot] = useState({
     id: "",
     gym_id: "",
@@ -30,7 +30,7 @@ function TimeSlotsCRUD() {
     endTime: "",
     date: "",
     reservedCount: 0,
-  }); // Starea pentru intervalul de timp curent
+  });
 
   useEffect(() => {
     fetchTimeSlots(); // Obținem lista de intervale de timp la montarea componentei
@@ -257,4 +257,4 @@ function TimeSlotsCRUD() {
   );
 }
 
-export default TimeSlotsCRUD; // Exportăm componenta TimeSlotsCRUD
+export default TimeSlotsCRUD;

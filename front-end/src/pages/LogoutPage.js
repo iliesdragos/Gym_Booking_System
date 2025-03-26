@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importăm axios pentru a face cereri HTTP
-import { useNavigate } from "react-router-dom"; // Importăm useNavigate pentru navigarea programatică
-import { Modal, Button } from "react-bootstrap"; // Importăm componentele necesare din react-bootstrap
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 const LogoutPage = () => {
-  const [show, setShow] = useState(true); // Starea pentru a controla vizibilitatea modalului
-  const navigate = useNavigate(); // Folosim hook-ul useNavigate pentru navigarea programatică
+  const [show, setShow] = useState(true);
+  const navigate = useNavigate();
 
   // Funcție pentru a închide modalul și a naviga înapoi în istoria browserului
   const handleClose = () => {
     setShow(false);
-    navigate(-1); // Navighează înapoi în istoria browserului
+    navigate(-1);
   };
 
   // Funcție pentru a gestiona deconectarea utilizatorului
@@ -24,11 +24,9 @@ const LogoutPage = () => {
       );
       console.log("Logout response:", response.data);
 
-      // Ștergem datele de autentificare din local storage
       localStorage.removeItem("userRole");
       localStorage.removeItem("userId");
 
-      // Redirecționăm utilizatorul către pagina principală
       navigate("/");
     } catch (error) {
       console.error("Error during logout:", error);
@@ -55,4 +53,4 @@ const LogoutPage = () => {
   );
 };
 
-export default LogoutPage; // Exportăm componenta LogoutPage
+export default LogoutPage;
