@@ -75,7 +75,7 @@ const getProfile = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-t;
+
 const updateProfile = async (req, res) => {
   const { email, name, newPassword } = req.body;
   const userId = req.session.userId;
